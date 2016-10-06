@@ -17,7 +17,7 @@ import com.product.review.service.ProductItemService;
 
 
 @RestController
-public class ProductItemController {
+public class ProductItemControllerApi {
 	
 	@Autowired
 	private ProductItemService productServiceBean;

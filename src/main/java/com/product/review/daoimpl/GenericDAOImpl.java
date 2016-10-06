@@ -19,13 +19,9 @@ public class GenericDAOImpl<T> implements IGenericDAO<T>{
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	private Class<T> persistentClass;  
-
-
 	public  Collection<T> findAll( Class<T> type){
 			//sessionFactory.openSession();
 		    //sessionFactory.getCurrentSession().getTransaction().begin();
-		    System.out.println(persistentClass);
 			CriteriaQuery<T> query = (CriteriaQuery<T>) this.sessionFactory
 		    									.getCurrentSession()
 		    									.getCriteriaBuilder()

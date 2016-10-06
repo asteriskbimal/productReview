@@ -34,9 +34,13 @@ public class CategoryController {
 		return test;
 	}
 	
-	@RequestMapping(value = "/auth/admin/catetories", method = RequestMethod.GET)
+	@RequestMapping(value = "/auth/admin/categories", method = RequestMethod.GET)
 	public String getAllCategory(Model model) {
-		model.addAttribute("category", categoryService.findAll());
+		List<Category> cat= (List<Category>) categoryService.findAll();
+		if(cat==null){
+			model.addAttribute("category",cat.add(new Category()) );
+		}else
+		model.addAttribute("category",cat);
 		return "category";
 	}
 
