@@ -79,8 +79,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/auth/admin/user/add", method = RequestMethod.POST)
 	public String saveUser(@ModelAttribute SystemUser user, Model model) {
+		System.out.println("I am here");
 		userService.create(user);
-		return "redirect:/auth/admin";
+		return "redirect:/auth/admin/user";
 	}
 
 	@RequestMapping(value = "/auth/admin/user/edit", params = { "id" }, method = RequestMethod.GET)
@@ -94,17 +95,19 @@ public class HomeController {
 	public String saveEditedUser(@RequestParam(value = "_submit", required = false) String submit,
 			@RequestParam(value = "_cancel", required = false) String cancel, @ModelAttribute SystemUser systemUser) {
 		System.out.println(systemUser.getSystemUserId());
+		//SystemUser s=userService.findOne(systemUser.getSystemUserId());
+		
 		if (cancel != null) {
-			return "redirect:/auth/admin";
+			return "redirect:/auth/admin/user";
 		} else {
 			userService.update(systemUser);
 		}
-		return "redirect:/auth/admin";
+		return "redirect:/auth/admin/user";
 	}
 
 	@RequestMapping(value = "/auth/admin/user/remove", params = { "id" }, method = RequestMethod.GET)
 	public String deleteUser(@RequestParam("id") long id, Model model) {
 		userService.delete(userService.findOne(id));
-		return "redirect:/auth/admin";
+		return "redirect:/auth/admin/user";
 	}
 }

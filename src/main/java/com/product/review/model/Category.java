@@ -22,16 +22,16 @@ public class Category {
 	@Column(name = "cat_name")
 	private String categoryName;
 
-	@OneToMany(mappedBy = "cat", cascade = CascadeType.PERSIST)
-	private List<ProductBrand> productBrands = new ArrayList<ProductBrand>();
+//	@OneToMany(mappedBy = "cat", cascade = CascadeType.ALL)
+//	private List<ProductBrand> productBrands = new ArrayList<ProductBrand>();
 
-	public List<ProductBrand> getProductBrands() {
-		return productBrands;
-	}
+//	public List<ProductBrand> getProductBrands() {
+//		return productBrands;
+//	}
 
-	public void setProductBrands(List<ProductBrand> productBrands) {
-		this.productBrands = productBrands;
-	}
+//	public void setProductBrands(List<ProductBrand> productBrands) {
+//		this.productBrands = productBrands;
+//	}
 
 	public Long getCategoryId() {
 		return categoryId;

@@ -158,6 +158,7 @@
             <version>2.6</version>
             <configuration>
                 <failOnMissingWebXml>false</failOnMissingWebXml>
+                 <outputDirectory>C:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps</outputDirectory>
             </configuration>
         </plugin>
 		</plugins>

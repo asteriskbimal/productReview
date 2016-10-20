@@ -28,13 +28,13 @@ public class CategoryController {
 
 		
 	@CrossOrigin(origins = "http://localhost:3000/dashboard")
-	@RequestMapping(value="/api/categories", method=RequestMethod.GET)
+	@RequestMapping(value="/api/category", method=RequestMethod.GET)
 	public @ResponseBody List<Category> getAllCategories(){
 		List<Category> test=(List<Category>) categoryService.findAll();
 		return test;
 	}
 	
-	@RequestMapping(value = "/auth/admin/categories", method = RequestMethod.GET)
+	@RequestMapping(value = "/auth/admin/category", method = RequestMethod.GET)
 	public String getAllCategory(Model model) {
 		List<Category> cat= (List<Category>) categoryService.findAll();
 		if(cat==null){
@@ -52,8 +52,9 @@ public class CategoryController {
 
 	@RequestMapping(value = "/auth/admin/category/add", method = RequestMethod.POST)
 	public String saveCategory(@ModelAttribute Category category, Model model) {
+		System.out.println("I was here");
 		categoryService.create(category);
-		return "redirect:/auth/admin";
+		return "redirect:/auth/admin/category";
 	}
 
 	@RequestMapping(value = "/auth/admin/category/edit", params = { "id" }, method = RequestMethod.GET)
@@ -68,16 +69,16 @@ public class CategoryController {
 			@RequestParam(value = "_cancel", required = false) String cancel, @ModelAttribute Category category) {
 		System.out.println(category.getCategoryId());
 		if (cancel != null) {
-			return "redirect:/auth/admin/categories";
+			return "redirect:/auth/admin/category";
 		} else {
 			categoryService.update(category);
 		}
-		return "redirect:/auth/admin/categories";
+		return "redirect:/auth/admin/category";
 	}
 
-	@RequestMapping(value = "/auth/admin/categories/remove", params = { "id" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/auth/admin/category/remove", params = { "id" }, method = RequestMethod.GET)
 	public String deleteCategory(@RequestParam("id") long id, Model model) {
 		categoryService.delete(categoryService.findOne(id));
-		return "redirect:/auth/admin/categories";
+		return "redirect:/auth/admin/category";
 	}
 }

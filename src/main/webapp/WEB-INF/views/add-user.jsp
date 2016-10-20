@@ -16,8 +16,8 @@
 
 	<div id="container" class="col-md-6 col-sm-8">
 		<h3 align="center">User Registration</h3>
-		<form:form modelAttribute="systemUser">
-			<c:if test="${empty systemUserId}">
+		<form:form modelAttribute="systemUser" >
+			<c:if test="${!empty systemUser.systemUserId}">
 				<div class="form-group row">
 					<form:label path="systemUserId" class="col-xs-2 col-form-label">
 						<spring:message text="User ID: " />
@@ -25,18 +25,6 @@
 					<div class="col-xs-8">
 						<form:input class="form-control" path="systemUserId" readonly="true"
 							 value="${systemUserId}" />
-						
-					</div>
-				</div>
-			</c:if>
-			<c:if test="${empty address.addressId}">
-				<div class="form-group row">
-					<form:label path="address.addressId" class="col-xs-2 col-form-label">
-						<spring:message text="Address ID: " />
-					</form:label>
-					<div class="col-xs-8">
-						<form:input class="form-control" path="address.addressId" readonly="true"
-							 value="${addressId}" />
 						
 					</div>
 				</div>
@@ -108,7 +96,7 @@
 				</div> 
 				
 			</div> 
-			<c:if test="${!empty systemUserId}">
+			<c:if test="${!empty systemUser.systemUserId}">
 
 				<button type="submit" class="btn btn-success">
 					<span class="glyphicon glyphicon-pencil"></span> Update User
@@ -117,7 +105,7 @@
 				<button type="submit" value="Cancel" name="_cancel"
 					class="btn btn-warning">Cancel</button>
 			</c:if>
-			<c:if test="${empty systemUserId}">
+			<c:if test="${empty systemUser.systemUserId}">
 				<button type="submit" class="btn btn-success">
 					<span class="glyphicon glyphicon-eye-open"></span> Add User
 				</button>
