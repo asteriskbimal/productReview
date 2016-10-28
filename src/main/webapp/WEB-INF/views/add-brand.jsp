@@ -4,7 +4,7 @@
 <%@ page session="true"%>
 <html>
 <head>
-<title>Add User</title>
+<title>Add Brand</title>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript"
@@ -16,8 +16,8 @@
 
 	<div id="container" class="col-md-6 col-sm-8">
 		<h3 align="center">Brand Registration</h3>
-		<form:form modelAttribute="brand" method="POST">
-			<c:if test="${!empty brand.brandId}">
+		<form:form modelAttribute="productBrand">
+			<c:if test="${!empty productBrand.brandId}">
 				<div class="form-group row">
 					<form:label path="brandId" class="col-xs-2 col-form-label">
 						<spring:message text="Brand ID: " />
@@ -29,19 +29,19 @@
 					</div>
 				</div>
 			</c:if>
-			
-			<c:if test="${!empty brand.products}">
+
+			<%-- 		<c:if test="${empty brand.products}">
 				<div class="form-group row">
 					<form:label path="products" class="col-xs-2 col-form-label">
-						<spring:message text="Brand ID: " />
+						<spring:message text="Products: " />
 					</form:label>
 					<div class="col-xs-8">
 						<form:input class="form-control" path="products" readonly="true"
-							value="${product}" />
+							value="${null}" />
 
 					</div>
 				</div>
-			</c:if>
+			</c:if> --%>
 
 			<div class="form-group row">
 				<form:label path="brandName" class="col-xs-2 col-form-label">
@@ -57,10 +57,12 @@
 					<spring:message text="Select Category: " />
 				</form:label>
 				<div class="col-xs-8">
-					<form:select path="cat" items="${category}" />
+					<form:select path="cat">
+						<form:options items="${catz}" itemValue="categoryId" />
+					</form:select>
 				</div>
 			</div>
-			<c:if test="${!empty brand.brandId}">
+			<c:if test="${!empty productBrand.brandId}">
 
 				<button type="submit" class="btn btn-success">
 					<span class="glyphicon glyphicon-pencil"></span> Update Brand
@@ -69,7 +71,7 @@
 				<button type="submit" value="Cancel" name="_cancel"
 					class="btn btn-warning">Cancel</button>
 			</c:if>
-			<c:if test="${empty brand.brandId}">
+			<c:if test="${empty productBrand.brandId}">
 				<button type="submit" class="btn btn-success">
 					<span class="glyphicon glyphicon-eye-open"></span> Add Brand
 				</button>

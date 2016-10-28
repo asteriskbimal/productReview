@@ -16,7 +16,7 @@
 
 	<div id="container" class="col-md-6 col-sm-8">
 		<h3 align="center">Category Registration</h3>
-		<form:form modelAttribute="category" method="POST">
+		<form:form modelAttribute="category" >
 			<c:if test="${!empty category.categoryId}">
 				<div class="form-group row">
 					<form:label path="categoryId" class="col-xs-2 col-form-label">

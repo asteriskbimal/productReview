@@ -40,10 +40,7 @@ public class ProductBrandServiceBean implements ProductBrandService {
 
 
 	public void update(ProductBrand productBrand) {
-		ProductBrand add = genericDAOImpl.findOne(ProductBrand.class,productBrand.getBrandId());
-		if (add == null) {
-			
-		}
+		
 		genericDAOImpl.update(productBrand);
 	}
 

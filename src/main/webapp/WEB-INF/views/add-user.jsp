@@ -38,7 +38,7 @@
 						value="${firstName}" />
 				</div>
 			</div>
-			<div class="form-group row">
+		 	<div class="form-group row">
 				<form:label path="lastName" class="col-xs-2 col-form-label">
 					<spring:message text="Last Name: " />
 				</form:label>
@@ -46,7 +46,7 @@
 					<form:input class="form-control" path="lastName"
 						value="${lastName}" />
 				</div>
-			</div>
+			</div> 
 			<div class="form-group row">
 				<form:label path="userName" class="col-xs-2 col-form-label">
 					<spring:message text="Username: " />

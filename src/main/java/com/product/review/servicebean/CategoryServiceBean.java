@@ -40,10 +40,6 @@ public class CategoryServiceBean implements CategoryService {
 
 
 	public void update(Category category) {
-		Category add = genericDAOImpl.findOne(Category.class,category.getCategoryId());
-		if (add == null) {
-			
-		}
 		genericDAOImpl.update(category);
 	}
 
