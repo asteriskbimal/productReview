@@ -4,17 +4,18 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.product.review.dao.IGenericDAO;
 import com.product.review.model.Category;
 import com.product.review.service.CategoryService;
 
 @Service
+@Transactional
 public class CategoryServiceBean implements CategoryService {
 
 	@Autowired
 	private IGenericDAO<Category> genericDAOImpl;
-	
 	
 
 	public Collection<Category> findAll() {
@@ -39,10 +40,6 @@ public class CategoryServiceBean implements CategoryService {
 
 
 	public void update(Category category) {
-		Category add = genericDAOImpl.findOne(Category.class,category.getCategoryId());
-		if (add == null) {
-			
-		}
 		genericDAOImpl.update(category);
 	}
 

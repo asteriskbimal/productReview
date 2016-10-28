@@ -17,7 +17,7 @@ import com.product.review.service.CategoryService;
 
 
 @RestController
-public class CategoryController {
+public class CategoryControllerApi {
 	
 	@Autowired
 	private CategoryService categoryServiceBean;

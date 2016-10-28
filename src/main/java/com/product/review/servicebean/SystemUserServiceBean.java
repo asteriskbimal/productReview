@@ -36,22 +36,7 @@ public class SystemUserServiceBean implements SystemUserService {
 
 	public void update(SystemUser systemUser) {
 		
-		SystemUser add = genericDAOImpl.findOne(SystemUser.class,systemUser.getSystemUserId());
-		if (add == null) {
-			System.out.println("Cannot update new record");
-		}
-		add.setSystemUserId(systemUser.getSystemUserId());
-		add.setUserName(systemUser.getUserName());
-		add.setLastName(systemUser.getLastName());
-		add.setFirstName(systemUser.getFirstName());
-		add.getAddress().setAddressId(systemUser.getAddress().getAddressId());
-		add.getAddress().setApartment(systemUser.getAddress().getApartment());
-		add.getAddress().setCity(systemUser.getAddress().getCity());
-		add.getAddress().setCountry(systemUser.getAddress().getCountry());
-		add.getAddress().setZip(systemUser.getAddress().getZip());
-		add.getAddress().setState(systemUser.getAddress().getState());
-		add.getAddress().setDescr(systemUser.getAddress().getDescr());
-		//genericDAOImpl.update(systemUser);
+		genericDAOImpl.update(systemUser);
 	}
 
 	public void delete(SystemUser systemUser) {

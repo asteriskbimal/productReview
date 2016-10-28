@@ -4,12 +4,14 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.product.review.dao.IGenericDAO;
 import com.product.review.model.Feature;
 import com.product.review.service.FeatureService;
 
 @Service
+@Transactional
 public class FeatureServiceBean implements FeatureService {
 
 	@Autowired

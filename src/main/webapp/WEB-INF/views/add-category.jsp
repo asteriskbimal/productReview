@@ -16,11 +16,11 @@
 
 	<div id="container" class="col-md-6 col-sm-8">
 		<h3 align="center">Category Registration</h3>
-		<form:form modelAttribute="category">
-			<c:if test="${empty categoryId}">
+		<form:form modelAttribute="category" >
+			<c:if test="${!empty category.categoryId}">
 				<div class="form-group row">
 					<form:label path="categoryId" class="col-xs-2 col-form-label">
-						<spring:message text="User ID: " />
+						<spring:message text="Category ID: " />
 					</form:label>
 					<div class="col-xs-8">
 						<form:input class="form-control" path="categoryId" readonly="true"
@@ -39,7 +39,7 @@
 						value="${categoryName}" />
 				</div>
 			</div>
-			<c:if test="${!empty categoryId}">
+			<c:if test="${!empty category.categoryId}">
 
 				<button type="submit" class="btn btn-success">
 					<span class="glyphicon glyphicon-pencil"></span> Update Category
@@ -48,7 +48,7 @@
 				<button type="submit" value="Cancel" name="_cancel"
 					class="btn btn-warning">Cancel</button>
 			</c:if>
-			<c:if test="${empty categoryId}">
+			<c:if test="${empty category.categoryId}">
 				<button type="submit" class="btn btn-success">
 					<span class="glyphicon glyphicon-eye-open"></span> Add Category
 				</button>
