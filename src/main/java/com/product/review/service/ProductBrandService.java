@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.product.review.model.ProductBrand;
 
 
-public interface ProductBrandService {
+public interface ProductBrandService extends Service{
 	
 	Collection<ProductBrand> findAll();
 	

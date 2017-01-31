@@ -10,9 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Product {
@@ -26,14 +27,30 @@ public class Product {
     
     public String description;
     
-    @OneToMany(mappedBy="product",cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="categoryId")
+    public Category category; 
+    
+    public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	@JsonIgnore
+	@OneToMany(mappedBy="product",cascade=CascadeType.PERSIST)
     private List<ProductModel> productModel=new ArrayList<ProductModel>();
     
-    @ManyToMany(cascade=CascadeType.PERSIST)
-    @JoinTable(name="product_brand",
-    joinColumns=@JoinColumn(name="productId"),
-    inverseJoinColumns=@JoinColumn(name="brandId"))
-    private List<ProductBrand> productBrand=new ArrayList<ProductBrand>();
+	@JsonIgnore
+    @ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="productId")
+    private ProductBrand productBrand;
     
     public List<ProductModel> getProductModel() {
 		return productModel;
@@ -43,11 +60,11 @@ public class Product {
 		this.productModel = productModel;
 	}
 
-	public List<ProductBrand> getProductBrand() {
+	public ProductBrand getProductBrand() {
 		return productBrand;
 	}
 
-	public void setProductBrand(List<ProductBrand> productBrand) {
+	public void setProductBrand(ProductBrand productBrand) {
 		this.productBrand = productBrand;
 	}
 

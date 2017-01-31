@@ -2,19 +2,18 @@ package com.product.review.model;
 
 import java.beans.PropertyEditorSupport;
 
-import com.product.review.service.CategoryService;
+import com.product.review.service.Service;
 
 public class Editor extends PropertyEditorSupport {
 
-    private final CategoryService categoryService;
+    private final Service service;
 
-    public Editor(CategoryService categoryService){
-        this.categoryService=categoryService;
+    public Editor(Service service){
+        this.service=service;
     }
 
     @Override
     public void setAsText(String text) throws IllegalArgumentException{
-        Category category=categoryService.findOne(Long.parseLong(text));
-        setValue(category);
+    	setValue(service.findOne(Long.parseLong(text)));
     }
 }

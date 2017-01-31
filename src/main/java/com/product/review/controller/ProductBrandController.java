@@ -1,10 +1,8 @@
 package com.product.review.controller;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +26,7 @@ import com.product.review.service.ProductBrandService;
 /**
  * Handles requests for the application home page.
  */
+
 @Controller
 @EnableTransactionManagement
 public class ProductBrandController {
@@ -37,12 +36,14 @@ public class ProductBrandController {
 	
 	@Autowired
 	private CategoryService categoryService;
-
+	
 	@InitBinder
-	protected void initBinder(WebDataBinder binder){
-	    binder.registerCustomEditor(Category.class, new Editor(categoryService));
+	protected void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Category.class, new Editor(categoryService));
+	//	binder.registerCustomEditor(ProductBrand.class, new Editor(productBrandService));
+
 	}
-		
+
 	@CrossOrigin(origins = "http://localhost:3000/dashboard")
 	@RequestMapping(value="/api/brand", method=RequestMethod.GET)
 	public @ResponseBody List<ProductBrand> getAllBrands(){
@@ -63,9 +64,7 @@ public class ProductBrandController {
 	@RequestMapping(value = "/auth/admin/brand/add", method = RequestMethod.GET)
 	public String addBrand(Model model) {
 		ProductBrand productBrand=new ProductBrand();
-		//List<Product>product=new ArrayList<Product>();
 		model.addAttribute("productBrand",productBrand);
-		//model.addAttribute("product",product);
 		Map<Category,String>category=new HashMap<Category,String>();
 		for(Category c:categoryService.findAll()){
 			category.put(c,c.getCategoryName());
@@ -85,9 +84,9 @@ public class ProductBrandController {
 	public String editBrand(@RequestParam("id") long id, Model model) {
         
 		model.addAttribute("productBrand", productBrandService.findOne(id));
-		Set<String>category=new HashSet<String>();
+		Map<Category,String>category=new HashMap<Category,String>();
 		for(Category c:categoryService.findAll()){
-			category.add(c.getCategoryName());
+			category.put(c,c.getCategoryName());
 		}
 		model.addAttribute("catz",category);
 		return "add-brand";

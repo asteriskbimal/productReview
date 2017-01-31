@@ -1,7 +1,6 @@
 package com.product.review.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,16 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class ProductModel {
 
 	@Id
@@ -28,11 +24,8 @@ public class ProductModel {
     private Long productmodelId;
 
     private String model;
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "mfg_date")
-    private Date manufactureDate;
-    
+   
+    @JsonIgnore
     @OneToMany(cascade=CascadeType.PERSIST)
     @JoinColumn(name="feature_id")
     private List<Feature> features=new ArrayList<Feature>();
@@ -40,7 +33,12 @@ public class ProductModel {
     @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name="productId")
     private Product product;
-
+    
+    @JsonIgnore
+    @OneToMany(cascade=CascadeType.PERSIST)
+    @JoinColumn(name="item_id")
+    private List<ProductItem> productItems=new ArrayList<ProductItem>();
+    
 	public List<Feature> getFeatures() {
 		return features;
 	}
@@ -72,15 +70,5 @@ public class ProductModel {
 	public void setModel(String model) {
 		this.model = model;
 	}
-
-	public Date getManufactureDate() {
-		return manufactureDate;
-	}
-
-	public void setManufactureDate(Date manufactureDate) {
-		this.manufactureDate = manufactureDate;
-	}
-
-
 
 }
