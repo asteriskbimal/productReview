@@ -32,19 +32,19 @@ public class ProductItemServiceBean implements ProductItemService{
 
 	public Long create(ProductItem product) {
 		
-		if(product.getProductmodelId()!=null){
-			return null;
-		}
+//		if(product.getProductmodelId()!=null){
+//			return null;
+//		}
 		return genericDAOImpl.create(product);
 	}
 
 
 	public void update(ProductItem product) {
 		
-		ProductItem productPersisted = genericDAOImpl.findOne(ProductItem.class,product.getProductmodelId());
-		if(productPersisted == null ){
-			
-		}
+//		ProductItem productPersisted = genericDAOImpl.findOne(ProductItem.class,product.getProductmodelId());
+//		if(productPersisted == null ){
+//			
+//		}
 		 genericDAOImpl.update(product);
 	}
 

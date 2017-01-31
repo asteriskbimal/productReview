@@ -39,10 +39,10 @@ public class ProductServiceBean implements ProductService{
 
 
 	public void update(Product product) {
-		Product prod=genericDAOImpl.findOne(Product.class,product.getProductId());
-		if(prod==null){
-			
-		}
+		//Product prod=genericDAOImpl.findOne(Product.class,product.getProductId());
+//		if(prod==null){
+//			
+//		}
 		genericDAOImpl.update(product);
 	}
 

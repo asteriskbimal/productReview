@@ -1,4 +1,4 @@
-package com.product.review.model;
+ package com.product.review.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class ProductBrand {
@@ -23,11 +25,12 @@ public class ProductBrand {
 
     private String brandName;
     
-    @ManyToMany(mappedBy="productBrand",cascade=CascadeType.PERSIST)
+    @JsonIgnore
+    @OneToMany(mappedBy="productBrand",cascade=CascadeType.PERSIST)
     private List<Product> products=new ArrayList<Product>();
     
     @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="catId")
+    @JoinColumn(name="catId") 
     private Category cat;
 
 	public Category getCat() {

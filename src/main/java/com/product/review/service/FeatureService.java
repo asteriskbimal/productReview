@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.product.review.model.Feature;
 
 
-public interface FeatureService {
+public interface FeatureService extends Service{
 	
 	Collection<Feature> findAll();
 	

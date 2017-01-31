@@ -38,7 +38,7 @@ public class CategoryController {
 	public String getAllCategory(Model model) {
 		List<Category> cat= (List<Category>) categoryService.findAll();
 		if(cat==null){
-			model.addAttribute("category",cat.add(new Category()) );
+			//model.addAttribute("category",cat.add(new Category()) );
 		}else
 		model.addAttribute("category",cat);
 		return "category";

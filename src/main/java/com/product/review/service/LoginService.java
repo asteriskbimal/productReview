@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.product.review.model.Login;
 
 
-public interface LoginService {
+public interface LoginService extends Service{
 	
 	Collection<Login> findAll();
 	

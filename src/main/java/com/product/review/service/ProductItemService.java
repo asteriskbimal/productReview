@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import com.product.review.model.ProductItem;
 
-public interface ProductItemService {
+public interface ProductItemService extends Service{
 	
 	Collection<ProductItem> findAll();
 	

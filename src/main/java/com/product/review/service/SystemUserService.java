@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.product.review.model.SystemUser;
 
 
-public interface SystemUserService {
+public interface SystemUserService extends Service{
 	
 	Collection<SystemUser> findAll();
 	

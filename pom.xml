@@ -72,7 +72,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>3.2.3.RELEASE</version>
-			</dependency>
+		</dependency>
 		<!-- End: Spring Dependencies -->
 		<!-- Start: Hibernate Dependencies -->
 		<dependency>
@@ -114,17 +114,12 @@
 		</dependency>
 		<!-- End: Hibernate Dependencies -->
 		<!-- Begin: Spring Security Dependencies -->
-		<!-- <dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			</dependency> -->
-		
+		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-config</artifactId> 
+			</dependency> <dependency> <groupId>org.springframework.security</groupId> 
+			<artifactId>spring-security-web</artifactId> </dependency> -->
+
 		<!-- End: Spring Security Dependencies -->
-		
+
 		<!-- start: Servlet dependencies -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -137,12 +132,18 @@
 			<artifactId>jsp-api</artifactId>
 			<version>2.1</version>
 			<scope>provided</scope>
-		</dependency> 
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+
 		<!-- end: servlet dependencies -->
 	</dependencies>
 
@@ -153,14 +154,15 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>2.6</version>
-            <configuration>
-                <failOnMissingWebXml>false</failOnMissingWebXml>
-                 <outputDirectory>C:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps</outputDirectory>
-            </configuration>
-        </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<outputDirectory>C:\Program Files\Apache Software Foundation\Tomcat
+						8.0\webapps</outputDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

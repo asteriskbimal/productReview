@@ -1,10 +1,11 @@
 package com.product.review.service;
 
 import java.util.Collection;
+
 import com.product.review.model.ProductModel;
 
 
-public interface ProductModelService {
+public interface ProductModelService extends Service{
 	
 	Collection<ProductModel> findAll();
 	
