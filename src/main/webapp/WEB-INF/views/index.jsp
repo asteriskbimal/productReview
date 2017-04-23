@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html ng-app="demo">
 	<head>
@@ -53,4 +53,4 @@
 	</div>
 		
 	</body>
-</html>
+</html> --%>

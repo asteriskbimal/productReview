@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.product.review.dao.IGenericDAO;
+import com.product.review.model.Product;
 
 @Repository
 public class GenericDAOImpl<T> implements IGenericDAO<T>{
@@ -20,8 +21,7 @@ public class GenericDAOImpl<T> implements IGenericDAO<T>{
 	SessionFactory sessionFactory;
 	
 	public  Collection<T> findAll( Class<T> type){
-			//sessionFactory.openSession();
-		    //sessionFactory.getCurrentSession().getTransaction().begin();
+		
 			CriteriaQuery<T> query = (CriteriaQuery<T>) this.sessionFactory
 		    									.getCurrentSession()
 		    									.getCriteriaBuilder()
@@ -31,50 +31,46 @@ public class GenericDAOImpl<T> implements IGenericDAO<T>{
 		    Query q = this.sessionFactory.getCurrentSession().createQuery(query);  
 			@SuppressWarnings("unchecked")
 			Collection<T> t=q.getResultList(); 
-		   	//sessionFactory.getCurrentSession().getTransaction().commit();
-			//sessionFactory.getCurrentSession().close();
 			return t;
 	       
 	}
 	
 	public T findOne( Class<T> type,Long id) {
 		Session session =sessionFactory.getCurrentSession();
-		//session.getTransaction().begin();
 		T t = (T) session.get(type, id);
-		//session.getTransaction().commit();
-		//session.close();
 		return t;
 	}
 
 
 	public Long create(T t) {
 		Session session =sessionFactory.getCurrentSession();
-		//session.getTransaction().begin();
 		Long check=(Long) session.save(t);
-		//session.getTransaction().commit();
-		//session.close();
 		return check;
 		
 	}
 
 	public void update(T t) {
 		Session session =sessionFactory.getCurrentSession();
-		//session.getTransaction().begin();
 		session.update(t);
-		//session.getTransaction().commit();
-		//session.close();
 	}
 
 	public void delete(T t) {
 		Session session =sessionFactory.getCurrentSession();
-		//session.getTransaction().begin();
 		session.delete(t);
-		//session.getTransaction().commit();
-		//session.close();
-		
 	}
 
 	
+	public Collection<T> findAllByTypeId(Class<T> type, Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	public <U> Collection<T> findAllByProduct(Class<T> type, Product p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
 	
 }

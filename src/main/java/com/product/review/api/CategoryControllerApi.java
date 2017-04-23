@@ -3,10 +3,10 @@ package com.product.review.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.product.review.model.Category;
 import com.product.review.service.CategoryService;
-
+@CrossOrigin
 @RestController
 public class CategoryControllerApi {
 
@@ -31,11 +31,11 @@ public class CategoryControllerApi {
 			return new ResponseEntity<List<Category>>(HttpStatus.NOT_FOUND);
 		}
 		
-		 registry.addMapping("/*").allowedOrigins("*").allowedMethods("GET", "POST", "OPTIONS", "PUT")
+		/* registry.addMapping("/*").allowedOrigins("*").allowedMethods("GET", "POST", "OPTIONS", "PUT")
          .allowedHeaders("Content-Type", "X-Requested-With", "accept", "Origin", "Access-Control-Request-Method",
                  "Access-Control-Request-Headers")
          .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
-         .allowCredentials(true).maxAge(3600);
+         .allowCredentials(true).maxAge(3600);*/
 			
 		return new ResponseEntity<List<Category>>(categories, HttpStatus.OK);
 	}
@@ -54,7 +54,7 @@ public class CategoryControllerApi {
 	}
 
 	// Creating new Category
-	@RequestMapping(value = "/auth/admin/CreateCategory", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/CreateCategory", method = RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Long> createCategory(Category category) {
 		return new ResponseEntity<Long>(categoryServiceBean.create(category), HttpStatus.CREATED);
 	}

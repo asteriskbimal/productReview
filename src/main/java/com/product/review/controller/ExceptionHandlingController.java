@@ -26,6 +26,7 @@ public class ExceptionHandlingController {
   @ExceptionHandler(DataIntegrityViolationException.class)
   public void conflict() {
     // Nothing to do
+	  System.out.println("error! DataIntegrityViolationException ");
   }
   
   // Specify name of a specific view that will be used to display the error:

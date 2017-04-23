@@ -1,7 +1,12 @@
 package com.product.review.controller;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.product.review.model.SystemUser;
@@ -75,14 +81,33 @@ public class HomeController {
 
 	@RequestMapping(value = "/auth/admin/user/add", method = RequestMethod.GET)
 	public String addUser(Model model) {
-		model.addAttribute("systemUser", new SystemUser());
+		SystemUser systemUser=new SystemUser();
+		model.addAttribute("systemUser", systemUser);
 		return "add-user";
 	}
 
 	@RequestMapping(value = "/auth/admin/user/add", method = RequestMethod.POST)
-	public String saveUser(@ModelAttribute SystemUser user, Model model) {
-		System.out.println("I am here");
+	public String saveUser(@ModelAttribute SystemUser user, Model model,HttpServletRequest request) {
 		userService.create(user);
+		MultipartFile files = user.getFiles();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		System.out.println("ReptD : " + rootDirectory);
+		Path path = Paths.get(rootDirectory + "\\resources\\images\\" + user.getSystemUserId()+ ".png");
+		System.out.println("full path : " + path);
+		if (files != null && !files.isEmpty()) {
+			try {
+//				int count=0;
+//				for(MultipartFile file:files){
+//					path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\img\\" + user.getSystemUserId()+"_"+count+ ".png");
+					files.transferTo(new File(path.toString()));
+//					count++;
+//				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("Product Image Saving Failed", e);
+			}
+		}		
+		
 		return "redirect:/auth/admin/user";
 	}
 

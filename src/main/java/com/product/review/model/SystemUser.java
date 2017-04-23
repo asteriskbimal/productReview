@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class SystemUser {
@@ -26,6 +29,17 @@ public class SystemUser {
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="addr_id")
 	private Address address;
+	
+	@Transient
+	MultipartFile files;
+
+	public MultipartFile getFiles() {
+		return files;
+	}
+
+	public void setFiles(MultipartFile files) {
+		this.files = files;
+	}
 
 	public Address getAddress() {
 		return address;

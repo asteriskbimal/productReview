@@ -145,7 +145,27 @@
 		</dependency>
 
 		<!-- end: servlet dependencies -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- spring test -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.3.2.RELEASE</version>
+		</dependency>
+
 	</dependencies>
+
+
 
 	<build>
 		<plugins>
@@ -159,7 +179,8 @@
 				<version>2.6</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<outputDirectory>C:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps</outputDirectory>
+					<outputDirectory>C:\Program Files\Apache Software Foundation\Tomcat
+						8.0\webapps</outputDirectory>
 				</configuration>
 			</plugin>
 		</plugins>

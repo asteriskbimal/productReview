@@ -10,21 +10,24 @@
 </head>
 <body>
 	<%@ include file="logout.jsp"%>
-
 	<div id="maincontent" class="col-md-8 col-sm-12">
 		<h3 align="center">User List</h3>
+		
 		<c:if test="${!empty systemUser}">
 			<table class="table table-hover table-bordered">
 				<tr>
 					<th class="col-xs-1">ID</th>
+					<th class="col-xs-1">Image</th>
 					<th class="col-xs-3">First Name</th>
 					<th class="col-xs-3">Last Name</th>
 					<th class="col-xs-3">City</th>
 					<th colspan="2" class="col-xs-2">Actions</th>
 				</tr>
+				
 				<c:forEach items="${systemUser}" var="user">
 					<tr>
 						<td class="col-xs-1">${user.systemUserId}</td>
+						<td class="col-xs-1"><img alt="image" src="<c:url value='/resources/images/${user.systemUserId}.png' />" width="50" height="25"/></td>
 						<td class="col-xs-3">${user.firstName}</td>
 						<td class="col-xs-3">${user.lastName}</td>
 						<td class="col-xs-3">${user.address.city}</td>

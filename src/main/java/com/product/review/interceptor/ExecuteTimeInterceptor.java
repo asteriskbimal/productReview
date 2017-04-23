@@ -36,7 +36,7 @@ public class ExecuteTimeInterceptor extends HandlerInterceptorAdapter{
 		long executeTime = endTime - startTime;
 
 		//modified the exisitng modelAndView
-		modelAndView.addObject("executeTime",executeTime);
+		modelAndView.addObject("executeTime",executeTime+10);
 
 		//log it
 	}

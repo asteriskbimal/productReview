@@ -43,6 +43,14 @@ public class ProductModel {
 		return features;
 	}
 
+	public List<ProductItem> getProductItems() {
+		return productItems;
+	}
+
+	public void setProductItems(List<ProductItem> productItems) {
+		this.productItems = productItems;
+	}
+
 	public void setFeatures(List<Feature> features) {
 		this.features = features;
 	}

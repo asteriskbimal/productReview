@@ -113,7 +113,10 @@ public class ProductController {
 
 	@RequestMapping(value = "/auth/admin/product/remove", params = { "id" }, method = RequestMethod.GET)
 	public String deleteProduct(@RequestParam("id") long id, Model model) {
-		produtService.delete(produtService.findOne(id));
+		
+		if(produtService.findOne(id).getProductModel().size()==0){
+			produtService.delete(produtService.findOne(id));
+		}
 		return "redirect:/auth/admin/product";
 	}
 }

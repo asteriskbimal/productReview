@@ -9,6 +9,7 @@
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript"
 	src="<c:url value="/resources/js/custom.js" />"></script>
+
 </head>
 <body>
 
@@ -16,16 +17,16 @@
 
 	<div id="container" class="col-md-6 col-sm-8">
 		<h3 align="center">User Registration</h3>
-		<form:form modelAttribute="systemUser" >
+		<form:form modelAttribute="systemUser" enctype="multipart/form-data">
 			<c:if test="${!empty systemUser.systemUserId}">
 				<div class="form-group row">
 					<form:label path="systemUserId" class="col-xs-2 col-form-label">
 						<spring:message text="User ID: " />
 					</form:label>
 					<div class="col-xs-8">
-						<form:input class="form-control" path="systemUserId" readonly="true"
-							 value="${systemUserId}" />
-						
+						<form:input class="form-control" path="systemUserId"
+							readonly="true" value="${systemUserId}" />
+
 					</div>
 				</div>
 			</c:if>
@@ -38,7 +39,7 @@
 						value="${firstName}" />
 				</div>
 			</div>
-		 	<div class="form-group row">
+			<div class="form-group row">
 				<form:label path="lastName" class="col-xs-2 col-form-label">
 					<spring:message text="Last Name: " />
 				</form:label>
@@ -46,7 +47,7 @@
 					<form:input class="form-control" path="lastName"
 						value="${lastName}" />
 				</div>
-			</div> 
+			</div>
 			<div class="form-group row">
 				<form:label path="userName" class="col-xs-2 col-form-label">
 					<spring:message text="Username: " />
@@ -56,7 +57,7 @@
 						value="${userName}" />
 				</div>
 			</div>
-			
+
 			<div class="form-group row">
 				<form:label path="address.city" class="col-xs-2 col-form-label">
 					<spring:message text="City: " />
@@ -67,8 +68,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<form:label path="address.state"
-					class="col-xs-2 col-form-label">
+				<form:label path="address.state" class="col-xs-2 col-form-label">
 					<spring:message text="State: " />
 				</form:label>
 				<div class="col-xs-8">
@@ -77,8 +77,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<form:label path="address.country"
-					class="col-xs-2 col-form-label">
+				<form:label path="address.country" class="col-xs-2 col-form-label">
 					<spring:message text="country: " />
 				</form:label>
 				<div class="col-xs-8">
@@ -93,9 +92,18 @@
 				<div class="col-xs-8">
 					<form:input class="form-control" path="address.zip"
 						value="${address.zip}" />
-				</div> 
-				
-			</div> 
+				</div>
+
+			</div>
+			<div class="form-group row">
+				<form:label path="files" class="col-xs-2 col-form-label">
+					<spring:message text="Upload File: " />
+				</form:label>
+				<div class="col-xs-8" id="filesUpload">		
+						<form:input class="form-control" path="files" type="file" />
+				</div>
+				<!--  <input type="button" id="addFile" class="btn btn-success" value="Add More files">-->
+			</div>
 			<c:if test="${!empty systemUser.systemUserId}">
 
 				<button type="submit" class="btn btn-success">

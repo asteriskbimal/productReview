@@ -11,21 +11,25 @@
 <body>
 	<%@ include file="logout.jsp"%>
 
-	<div id="maincontent" class="col-md-8 col-sm-12">
+	<div id="maincontent" class="col-md-8 col-sm-8">
 		<h3 align="center">Product List</h3>
 		<c:if test="${!empty product}">
 			<table class="table table-hover table-bordered">
 				<tr>
 					<th class="col-xs-1">ID</th>
-					<th class="col-xs-3">Product Name</th>
-					<th class="col-xs-3">Category Name</th>
-					<th colspan="2" class="col-xs-2">Actions</th>
+					<th class="col-xs-1">Product Name</th>
+					<th class="col-xs-1">Product Brand</th>
+					<th class="col-xs-1">Category Name</th>
+					<th class="col-xs-3">Product Description</th>
+					<th colspan="2" class="col-xs-5">Actions</th>
 				</tr>
 				<c:forEach items="${product}" var="bran">
 					<tr>
 						<td class="col-xs-1">${bran.productId}</td>
-						<td class="col-xs-3">${bran.productName}</td>
+						<td class="col-xs-2">${bran.productName}</td>
+						<td class="col-xs-2">${bran.productBrand.brandName}</td>
 						<td class="col-xs-3">${bran.category.categoryName}</td>
+						<td class="col-xs-3">${bran.description}</td>
 						<td colspan="2"><a
 							href="<c:url value='${request.contextPath}/auth/admin/product/edit?id=${bran.productId}' />"
 							class="label label-success"><span

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.product.review.dao.IGenericDAO;
+import com.product.review.model.Product;
 import com.product.review.model.ProductModel;
 import com.product.review.service.ProductModelService;
 
@@ -53,6 +54,18 @@ public class ProductModelServiceBean implements ProductModelService {
 
 	public void delete(ProductModel productModel) {
 		genericDAOImpl.delete(productModel);
+	}
+
+
+	public Collection<ProductModel> findAllByProduct(Product p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Collection<ProductModel> findAllByProductId(Long Id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
